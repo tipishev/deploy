@@ -179,6 +179,7 @@ def configure_gunicorn(c):
     context = {
         'host': c.host,
         'user': c.config.user,
+         # TODO rename to secrets_path or generalize to runtime environment?
         'secrets_file': get_secrets_path(c),
 
         'source_dir': get_source_dir(c),
@@ -239,6 +240,8 @@ def create_user(c):
 def copy_authorized_keys(c):
     c.put(c.config.local_public_key_filename, 'local.pub')
     c.put(c.config.deploy.ssh_repo_key, 'repo.pub')
+
+    # TODO check if the resulting file is correctly formatted
     c.run('cat local.pub repo.pub > /home/user/.ssh/authorized_keys')
     c.run('rm local.pub repo.pub')
 

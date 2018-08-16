@@ -355,7 +355,7 @@ class Deployer:
 
 @task
 def deploy(c):
-    c.sudo('service apache2 stop')
+    c.sudo('service apache2 stop')  # TODO remove
     site_dir = get_site_dir(c)
     return Deployer(c, site_dir).deploy()
 

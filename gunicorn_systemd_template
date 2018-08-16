@@ -1,0 +1,18 @@
+[Unit]
+Description=Gunicorn server for $host
+
+[Service]
+Restart=on-failure
+User=$user
+EnvironmentFile=$secrets_file
+WorkingDirectory=$source_dir
+
+ExecStart=$gunicorn_binary \
+    --log-file $log_file \
+    --error-logfile $error_log_file \
+    --timeout $timeout \
+    --workers $number_of_workers \
+    --bind unix:$socket_name $wsgi_application
+
+[Install]
+WantedBy=multi-user.target

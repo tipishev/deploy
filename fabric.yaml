@@ -1,0 +1,40 @@
+load_ssh_configs: false
+
+user: user 
+email: user@example.com
+password: &password YOUR_SECRET_PASSWORD
+locale: en_US.UTF-8
+# should exist on your local host
+local_public_key_filename: /home/YOUR_LOCAL_USERNAME/.ssh/id_rsa.pub
+sudo:
+  password: *password
+
+PPAs:
+  - jonathonf/python-3.6
+  - certbot/certbot
+
+apt_dependencies:
+  - git
+  - nginx
+  - tmux
+  - htop
+  - python-certbot-nginx
+  - python3.6-dev
+  - python-pip
+  - python-virtualenv
+  - default-jdk
+
+https_backup:
+  # should exist on your local host
+  local_directory: /home/YOUR_LOCAL_USERNAME/HTTPS_BACKUP_DIRECTORY/
+  filename: letsencrypt.tar.gz
+
+deploy:
+  project_name: YOUR_PROJECT_NAME
+  repo: YOUR_GIT_REPO #git@bitbucket.org:your_username/your_project.git
+  ssh_host_key: /home/SSH_KEY_FOR_REMOTE_HOST/id_rsa
+  ssh_repo_key: /home/YOUR_USERNAME/bitbucket.pub  # to clone the repo
+
+secrets:
+  - STRIPE_PUBLIC_KEY
+  - STRIPE_SECRET_KEY

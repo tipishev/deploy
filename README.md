@@ -22,12 +22,13 @@ fab -H user@example.com init
 ```
 * subsequent deploys
 ```shell
-fab -H user@example.com deploy  # user is hardcoded
+fab -H user@example.com deploy
 ```
 
 ## Other Commands
-* log
-* backup-https
-* renew-https
-* restore-https
-* setup-secrets
+```TODO rename commands to make explanation redundant```
+* `log` show Django application log
+* `backup-https` save https settings on the local host
+* `renew-https`  renew https certificate
+* `restore-https`
+* `setup-secrets`

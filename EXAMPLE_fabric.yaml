@@ -1,3 +1,6 @@
+# copy this file to fabric.yaml, and set your values there
+# fabric.yaml is gitignored
+
 load_ssh_configs: false
 
 user: user 

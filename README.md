@@ -12,9 +12,16 @@ site deploy to a Ubuntu 16.04 VPS.
 * Python3+
 * Fabric 2.3.1+
 
-## Usage
+## Installation
+* run
+```shell
+cd django-project-repository
+git submodule add git@github.com:tipishev/deploy.git
+```
 * copy `EXAMPLE_fabric.yaml` to `fabric.yaml`
 * change deploy settings in `fabric.yaml`
+
+## Usage
 * initial fresh server setup
 ```shell
 fab -H root@example.com root-init

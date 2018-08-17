@@ -179,7 +179,7 @@ def configure_gunicorn(c):
     context = {
         'host': c.host,
         'user': c.config.user,
-         # TODO rename to secrets_path or generalize to runtime environment?
+        # TODO rename to secrets_path or generalize to runtime environment?
         'secrets_file': get_secrets_path(c),
 
         'source_dir': get_source_dir(c),
@@ -301,8 +301,8 @@ class Deployer:
             self.c.run(f'cd {source_dir} && git fetch')
         else:
             self.c.run(f'git clone {self.c.config.deploy.repo} {source_dir}')
-        current_commit = (self.c
-                          .local('git log -n 1 --format=%H').stdout.strip())
+        current_commit = (
+            self.c.local('cd ../ && git log -n 1 --format=%H').stdout.strip())
         self.c.run(f'cd {source_dir} && git reset --hard {current_commit}')
 
     def _update_settings(self):

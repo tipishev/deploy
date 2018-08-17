@@ -8,10 +8,26 @@ Fabric2-based utils for
 
 site deploy to a Ubuntu 16.04 VPS.
 
-## tl;dr
-* change `fabfile.yaml,` `deploy.sh,` and `init.sh` to match your settings
-* call init.sh for the first server setup
-* call deploy.sh whenever you deploy
+## Requirements
+* Python3+
+* Fabric 2.3.1+
 
-## Commands
+## Usage
+* copy `EXAMPLE_fabric.yaml` to `fabric.yaml`
+* change deploy settings in `fabric.yaml`
+* initial fresh server setup
+```shell
+fab -H root@example.com root-init
+fab -H user@example.com init
+```
+* subsequent deploys
+```shell
+fab -H user@example.com deploy  # user is hardcoded
+```
 
+## Other Commands
+* log
+* backup-https
+* renew-https
+* restore-https
+* setup-secrets

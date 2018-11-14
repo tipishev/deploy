@@ -5,6 +5,7 @@ Fabric2-based utils for
 * Django
 * nginx
 * gunicorn
+* letsencrypt.org HTTPS
 
 site deploy to a Ubuntu 16.04 VPS.
 
